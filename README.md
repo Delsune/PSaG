@@ -10,3 +10,5 @@ Steps for using this app:
 4. When you re-open the app, enter the SAME encryption key you did before (which is why it is important to write it down).
 
 Liability statement: I am NOT responsible for any issues that occur outside of this program. If your 32-character is stolen (or you give it away unwillingly/unknowingly), or, alternatively, you unknowingly install a trojan virus, I am not liable for the outcomes that arise.
+
+Commercial use statement: If you wish to sell this product, you must consult me first. This is to prevent usage of my work for someone else's financial gain.
