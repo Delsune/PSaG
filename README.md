@@ -11,4 +11,4 @@ Steps for using this app:
 
 Liability statement: I am NOT responsible for any issues that occur outside of this program. If your 32-character is stolen (or you give it away unwillingly/unknowingly), or, alternatively, you unknowingly install a trojan virus, I am not liable for the outcomes that arise.
 
-Commercial use statement: If you wish to sell this product, you must consult me first. This is to prevent usage of my work for someone else's financial gain.
+Commercial use statement: If you wish to sell this product, you must consult me first (either through Discord or Ko-fi). This is to prevent usage of my work for someone else's financial gain.
