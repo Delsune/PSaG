@@ -1,5 +1,5 @@
 # PSaG
-A simple password storage and generation app that also securely encrypts said passwords.
+A simple password storage and generation app that also securely encrypts said passwords.\n
 Everything is also stored locally on your PC, which may or may not be more secure.
 
 Steps for using this app:
