@@ -4,7 +4,7 @@ A simple password storage and generation app that also securely encrypts said pa
 Steps for using this app:
 1. Create a 32-character password with NO SPACES
    - Make sure to save this password somewhere safe, since it is your encryption key.
-2. Click "Generate Password" to create new passwords (or add your own to the Passwords.txt file)
+2. Click "Generate Password" to create new passwords (or add your own to the Password.txt file)
 3. Click on "Encrypt File" to encrypt the Passwords.txt file.
    - You can close the app after this.
 4. When you re-open the app, enter the SAME encryption key you did before (which is why it is important to write it down).
