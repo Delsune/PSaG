@@ -103,7 +103,7 @@ def decrypt_file():
 
 root = Tk()
 root.title("Secure Password Generator")
-root.geometry('500x250+50+50')
+root.geometry('600x250+50+50')
 
 statement = Label(text="Please enter the 32-character key you would like to use for encryption/decryption: ")
 key_input = Text(root, height=2.5 , width=50)
@@ -126,5 +126,6 @@ file_decrypt = tk.Button(root, text='Decrypt File', command=lambda: decrypt_file
 make_pass.place(x=5, y=5)
 file_encrypt.place(x=5, y=75)
 file_decrypt.place(x=100, y=75)
+
 
 root.mainloop()
