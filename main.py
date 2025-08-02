@@ -125,7 +125,8 @@ file_decrypt = tk.Button(root, text='Decrypt File', command=lambda: decrypt_file
 
 make_pass.place(x=5, y=5)
 file_encrypt.place(x=5, y=75)
-file_decrypt.place(x=100, y=75)
+file_decrypt.place(x=120, y=75)
 
 
 root.mainloop()
+
