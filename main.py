@@ -1,11 +1,11 @@
 import base64
-import bcrypt
 import secrets
 import tkinter as tk
 import datetime as dt
 import cryptography as crypt
 from cryptography.fernet import Fernet
 
+global key
 BYTES = 32
 
 
@@ -20,7 +20,7 @@ def get_key():
 
         root.destroy()
 
-    elif len(entered_key) != BYTES:
+    else:
         message("The inputted key must be exactly 32 characters!", 125, 90)
 
 
@@ -28,24 +28,18 @@ def generate():
     secure_pass = secrets.token_bytes(BYTES)
     time_of_creation = dt.datetime.now()
 
-    salt = bcrypt.gensalt()
-    hash = bcrypt.hashpw(secure_pass, salt)
+    try:
+        with open(r"Password.txt", "a", encoding="utf-8") as f:
+            f.write("\n" + str(secure_pass) + " at " + str(time_of_creation) + "\n")
 
-    with open(r"Password.txt", "a+", encoding="utf-8") as f:
-        f.write("\n" + str(hash) + " at " + str(time_of_creation) + "\n")
-
-        line = f.read()
-
-        while line != '':
-            continue
-
-    message("Password Generated", 2.5, 30)
+        message("Password Generated: " + str(secure_pass), 2.5, 30)
+    except PermissionError:
+        message("Couldn't access file, permission denied", 2.5, 30)
 
 
 def encrypt_file():
     try:
         fernet = Fernet(key)
-        time_of_encryption = dt.datetime.now()
 
         with open(r"Password.txt", "rb") as f:
             normal = f.read()
@@ -53,13 +47,15 @@ def encrypt_file():
         encrypted = fernet.encrypt(normal)
 
         with open(r"Password.txt", "wb") as f:
-            f.write(encrypted + bytes(str(time_of_encryption), "utf-8"))
+            f.write(encrypted)
 
         message("File Encrypted", 2.5, 100)
     except NameError:
         message("There is no key for encryption!", 2.5, 100)
     except FileNotFoundError:
         message("The file does not exist!", 2.5, 100)
+    except PermissionError:
+        message("Couldn't access file, permission denied", 2.5, 100)
 
 
 def message(text, x, y):
@@ -89,6 +85,8 @@ def decrypt_file():
         message("The key is not the same!", 2.5, 100)
     except FileNotFoundError:
         message("The file does not exist!", 2.5, 100)
+    except PermissionError:
+        message("Couldn't access file, permission denied", 2.5, 100)
 
 
 root = tk.Tk()
