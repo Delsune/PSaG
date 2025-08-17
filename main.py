@@ -5,7 +5,7 @@ import datetime as dt
 import cryptography as crypt
 from cryptography.fernet import Fernet
 
-global key
+key = 0
 BYTES = 32
 
 
