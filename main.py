@@ -18,7 +18,7 @@ def message(text):
 
 
 def get_key():
-    entered_key = key_input.get("1.0", "end-1c")
+    entered_key = key_input.get("1.0", "end-1c").strip(" ")
 
     if len(entered_key) == BYTES:
         converted_key = bytes(entered_key, "utf-8")
@@ -26,7 +26,8 @@ def get_key():
         global key
         key = base64.urlsafe_b64encode(converted_key)
 
-        root.destroy()
+        key_input.destroy()
+        enter_key.destroy()
 
     else:
         message("The inputted key must be exactly 32 characters!")
@@ -41,6 +42,7 @@ def generate():
             f.write("\n" + str(secure_pass) + " at " + str(time_of_creation) + "\n")
 
         message("Password Generated: " + str(secure_pass))
+
     except PermissionError:
         message("Couldn't access file, permission denied")
 
@@ -93,29 +95,45 @@ def decrypt_file():
         message("Couldn't access file, permission denied")
 
 
+def show_passwords():
+    try:
+        with open(r"Password.txt", 'r') as file:
+            content = file.read()
+
+            file.close()
+
+        pass_window = tk.Toplevel(root)
+        pass_window.title("Passwords")
+        pass_window.geometry("800x800+50+50")
+
+        pass_display = tk.Text(pass_window, height=750, width=750)
+        pass_display.insert("1.0", content)
+        pass_display.configure(state="disabled")
+        pass_display.pack()
+
+    except FileNotFoundError:
+        message("The file does not exist!")
+    except PermissionError:
+        message("Couldn't access file, permission denied")
+
+
 root = tk.Tk()
 root.title("Secure Password Generator")
-root.geometry('600x250+50+50')
+root.geometry('600x300+50+50')
 
-statement = tk.Label(text="Please enter the 32-character key you would like to use for encryption/decryption: ")
-key_input = tk.Text(root, height=2.5, width=50)
+key_input = tk.Text(root, height=1.0, width=50)
 enter_key = tk.Button(root, text="Enter", command=lambda: get_key())
 
-statement.pack()
 key_input.pack()
 enter_key.pack()
 
-root.mainloop()
-
-root = tk.Tk()
-root.title("Secure Password Generator")
-root.geometry('500x250+50+50')
-
 make_pass = tk.Button(root, text='Generate Password', command=lambda: generate())
+show_pass = tk.Button(root, text='Show Password', command=lambda: show_passwords())
 file_encrypt = tk.Button(root, text='Encrypt File', command=lambda: encrypt_file())
 file_decrypt = tk.Button(root, text='Decrypt File', command=lambda: decrypt_file())
 
 make_pass.pack()
+show_pass.pack()
 file_encrypt.pack()
 file_decrypt.pack()
 
