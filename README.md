@@ -8,6 +8,7 @@ Steps for using this app:
 3. Click on "Encrypt File" to encrypt the Passwords.txt file.
    - You can close the app after this.
 4. When you re-open the app, enter the SAME encryption key you did before (which is why it is important to write it down).
+5. You may click "Show Passwords" to display all passwords in the Passwords.txt file.
 
 Additional statement: If you encounter an issue with this program, please let me know by submitting it to the "Issues" tab of this repository.
 
